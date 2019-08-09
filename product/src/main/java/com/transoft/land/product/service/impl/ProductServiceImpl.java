@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -29,13 +30,17 @@ public class ProductServiceImpl implements ProductService {
     @Override
     //@Transactional(value = true)
     public List<ProductDTO> findAll() {
-        List<ProductDTO> result = new ArrayList<>();
-        List<Product> find = productRepository.findAll();
+        List<Product> result = productRepository.findAll();
 
-        find.stream().forEach(product -> {
-            result.add(new ProductDTO(product.getId(), product.getName(),product.getAmount(),product.getCreatedDate()));
-        });
-        return result;
+        return result.stream().map(product ->
+            new ProductDTO(product.getId(), product.getName(),product.getAmount(),product.getCreatedDate())
+        ).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Product> findAllObj() {
+        return productRepository.findAll();
+
     }
 
     @Override

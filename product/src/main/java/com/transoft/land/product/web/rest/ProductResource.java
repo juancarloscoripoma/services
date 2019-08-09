@@ -37,6 +37,13 @@ public class ProductResource {
         return new ResponseEntity<>(page, responseHeaders, HttpStatus.OK);
     }
 
+    @GetMapping("/report/find-all/list/obj")
+    public ResponseEntity<List<Product>> findAllListObj() {
+        List<Product> page = productService.findAllObj();
+        HttpHeaders responseHeaders = new HttpHeaders();
+        return new ResponseEntity<>(page, responseHeaders, HttpStatus.OK);
+    }
+
     @GetMapping("/report/find-all/pageable")
     public ResponseEntity<List<ProductDTO>> findAllByPageable(@PageableDefault Pageable pageable) {
         Page<ProductDTO> page = productService.findAllByPageable(pageable);
