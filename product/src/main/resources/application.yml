@@ -1,0 +1,27 @@
+# Datasource and JPA configuration to be used for using the same tokenstore as the authorization server for
+# the defined resource server. Note that there can't be 2 different root nodes, so datasource falls under the "spring" node.
+spring:
+  application:
+    name: products
+  datasource:
+    url: jdbc:mysql://localhost:3306/product?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false
+    username: root
+    password: mysql
+    driver-class: com.mysql.jdbc.Driver
+    separator: ^
+    continueOnError: false
+    schema: classpath:/sql/1.initTable.sql
+    data: classpath:/sql/2.insertData.sql
+  #
+  jpa:
+    database: MYSQL
+    database-platform: org.hibernate.dialect.MySQLDialect
+    show-sql: true
+    hibernate:
+      #ddl-auto: create
+      show_sql: true
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+
+server:
+  port: 8001
