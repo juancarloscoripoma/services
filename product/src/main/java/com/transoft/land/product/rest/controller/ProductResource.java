@@ -1,4 +1,4 @@
-package com.transoft.land.product.web.rest;
+package com.transoft.land.product.rest.controller;
 
 import com.transoft.land.product.domain.Product;
 import com.transoft.land.product.service.ProductService;
