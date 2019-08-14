@@ -3,6 +3,7 @@ package com.transoft.land.item.rest.controller;
 import com.transoft.land.item.domain.Item;
 import com.transoft.land.item.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +24,7 @@ public class ItemResource {
     */
 
     @Autowired
+    @Qualifier("serviceFeignImpl")
     private ItemService itemService;
 
     @GetMapping("/report/item/find-all/list")
