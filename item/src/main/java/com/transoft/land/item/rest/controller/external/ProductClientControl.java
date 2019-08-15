@@ -14,6 +14,6 @@ public interface ProductClientControl {
     List<Product> findAll();
 
     @GetMapping("/product/find-by/{id}")
-    Product findById(@PathVariable Long id);
+    Product findById(@PathVariable("id") Long id);
 
 }
