@@ -10,10 +10,10 @@ import java.util.List;
 @FeignClient(name = "service-products", url = "localhost:8001")
 public interface ProductClientControl {
 
-    @GetMapping("/report/find-all/list/obj")
-    List<Product> findAll();
+    @GetMapping("/api/report/find-all/list/obj")
+    List<Product> findAllObj();
 
-    @GetMapping("/product/find-by/{id}")
+    @GetMapping("/api/product/find-by/{id}")
     Product findById(@PathVariable("id") Long id);
 
 }
